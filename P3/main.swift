@@ -69,6 +69,36 @@ private func chooseNickname() -> String {
 }
 
 /**
+ Use the character's class as a nickname if the player does not want to choose one.
+
+ - Returns: Bool, *true* If the player does not want to choose a nickname
+ and *false* If the player wants to choose the nickname.
+ */
+func useCharcaterNameByDefault() -> Bool {
+    var useDefaultName = false
+    var userHasChosen = false
+
+    print("\nDo you want to choose the nicks of your characters? ? (y/n)")
+    while !userHasChosen {
+
+        //Verify if input text isn't empty
+        if let inputText = readLine() {
+
+            if inputText == "y" {
+                userHasChosen = true
+            } else if inputText == "n" {
+                userHasChosen = true
+                useDefaultName = true
+            } else {
+                print("This is not a correct answer.")
+            }
+        }
+    }
+
+    return useDefaultName
+}
+
+/**
  Choose the three characters used during the game
 
  - returns: A table with 3 characters
@@ -76,6 +106,7 @@ private func chooseNickname() -> String {
 private func createTeamOfCharacter() -> [Character] {
     ///The characters chosen by the user
     var characters = [Character]()
+    let useDefaultName: Bool
 
     print("\nHere are the characters available, you can choose 3:"
         + "\n"
@@ -83,6 +114,8 @@ private func createTeamOfCharacter() -> [Character] {
         + "\n 2. Mage - PV:80 / Healts:8 / Type:Normal"
         + "\n 3. Dward - PV:60 / Attack:15 / Type:Grass"
         + "\n 4. Colossus - PV:150 / Attack:7 / Type:Fire")
+
+    useDefaultName = useCharcaterNameByDefault()
 
     for index in 1...3 {
         ///The number chosen by the user
@@ -117,9 +150,12 @@ private func createTeamOfCharacter() -> [Character] {
         default: print("An unknown error has occurred.")
         }
 
-        //Choice a name for the character
-        print("\nChoose a name for your \(character.name)")
-        character.name = chooseNickname()
+        //Set the character's name
+        if !useDefaultName {
+            //Choice a name for the character
+            print("\nChoose a name for your \(character.name)")
+            character.name = chooseNickname()
+        }
 
         //Append the new character
         characters.append(character)
