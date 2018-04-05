@@ -10,13 +10,13 @@ import Foundation
 
 ///A player in the game
 class Player {
-    
+
     ///The name of the player
     var name: String
-    
+
     ///The characters of his team
     var teamOfCharacter: [Character]
-    
+
     /**
      Initialize a new player with the provided specifications
      
