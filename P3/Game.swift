@@ -49,4 +49,13 @@ class Game {
             self.opponentToCurrentPlayer = players[0]
         }
     }
+
+    /**
+     Inverse current player and opponent
+     */
+    func nextPlayer() {
+        let temporaryPlayer = self.currentPlayer
+        self.currentPlayer = self.opponentToCurrentPlayer
+        self.opponentToCurrentPlayer = temporaryPlayer
+    }
 }
