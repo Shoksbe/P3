@@ -162,3 +162,4 @@ private func createTeamOfCharacter() -> [Character] {
     }
     return characters
 }
+
