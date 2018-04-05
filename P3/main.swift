@@ -201,4 +201,19 @@ func playGame() {
     print("\n* \(game.currentPlayer.name): Choose a fighter *")
     print("*-------------------------------*")
     let fighter = game.currentPlayer.chooseFighter(inTeamOf: game.currentPlayer)
+
+    //
+    //Attack/Heal
+    //
+    if fighter is Mage {
+        print("\n* \(game.currentPlayer.name): Choose a character to heal *")
+        print("*-------------------------------*")
+        let characterToHeal = game.currentPlayer.chooseFighter(inTeamOf: game.currentPlayer)
+        fighter.heal(characterToHeal)
+    } else {
+        print("\n* \(game.currentPlayer.name): Choose a opponent *")
+        print("*-------------------------------*")
+        let opponent = game.currentPlayer.chooseFighter(inTeamOf: game.opponentToCurrentPlayer)
+        fighter.attack(opponent)
+    }
 }

@@ -59,4 +59,63 @@ class Character {
     func isAlive() -> Bool {
         return self.lifePoint > 0
     }
+
+    /**
+     Attack another character
+
+     - Parameters: The character to attack
+     */
+    func attack(_ opponent: Character) {
+
+        ///The damage caused by the weapon.
+        var weaponDamages = self.weapon.damages
+
+        ///A description of the bonus/weakness caused
+        var weaponDamagesDescription: String = ""
+
+        //Damage bonus
+        if self.type.strongAgainst == opponent.type.rawValue {
+            weaponDamages = self.weapon.damages + 5
+            weaponDamagesDescription = "+ 5 thanks to the weakness of the opponent."
+        } else if self.type.weaknessAgainst == opponent.type.rawValue {
+            weaponDamages = self.weapon.damages - 5
+            weaponDamagesDescription = "- 5 because of the resistance of the opponent."
+        } else {
+            weaponDamagesDescription = "No bonus"
+        }
+
+        //The character's life can not go below zero.
+        if opponent.lifePoint < weaponDamages {
+            opponent.lifePoint = 0
+        } else {
+            opponent.lifePoint -= weaponDamages
+        }
+
+        //Resume action
+        print("\n- Batlle's description :")
+        print("\n\(self.name)(\(self.type.rawValue)) ⚔️ \(opponent.name)(\(opponent.type.rawValue))")
+        print("\nHe inflicts, \(weaponDamages) damage.")
+        print("-- \(self.weapon.damages) damage with its \(self.weapon.name) ")
+        print("-- \(weaponDamagesDescription)\n")
+
+        if opponent.lifePoint == 0 {
+            print("\(opponent.name) is dead !\n")
+        } else {
+            print("He has \(opponent.lifePoint)PV\n")
+        }
+    }
+
+    /**
+     Heal a character in the same team
+
+     - Parameters: The character to heal
+     */
+    func heal(_ characterToHeal: Character) {
+        characterToHeal.lifePoint += self.weapon.damages
+
+        //Resume action
+        print("\n- Description of the battle:\n")
+        print("\(self.name) cared \(characterToHeal.name) and gave him \(self.weapon.damages)PV.\n")
+        print("He has now \(characterToHeal.lifePoint)PV\n")
+    }
 }
