@@ -243,6 +243,26 @@ private func treasureOpening(whitWeaponType category: Weapon.Category) -> Weapon
 }
 
 /**
+ Ask if the player will play again and launch/quit the game
+ */
+func willYouPlayAgain() {
+    print("Play again ? (y/n)")
+
+    loop: while true {
+        if let inputText = readLine() {
+            if inputText == "y" {
+                nicknameUsed = []
+                playGame()
+            } else if inputText == "n" {
+                break loop
+            } else {
+                print("This is not a correct answer.")
+            }
+        }
+    }
+}
+
+/**
  Begin a new game
  */
 func playGame() {
@@ -334,6 +354,10 @@ func playGame() {
     print("***************************")
     print("\n#\(game.winner!.name) in \(game.lapCounter) rounds.\n")
 
+    //
+    //Play again ?
+    //
+    willYouPlayAgain()
 }
 
 //Run the game
