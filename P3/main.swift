@@ -165,6 +165,83 @@ private func createTeamOfCharacter() -> [Character] {
     }
     return characters
 }
+
+/**
+ Show the treasure randomly.
+
+ - Returns: Bool, *true* if the treasure appear and *false* if not
+ */
+private func treasureWillAppear() -> Bool {
+    //Random number to know if the treasur will appear or not
+    let randomNumber1 = Int(arc4random_uniform(3))
+    //Random number to know if the treasur will appear or not
+    let randomNumber2 = Int(arc4random_uniform(3))
+
+    return randomNumber1 == randomNumber2
+}
+
+/**
+ Recover a random weapon
+
+ - Parameters: The category of the weapon(Attack/Care)
+
+ - Returns: The new random weapon
+ */
+private func treasureOpening(whitWeaponType category: Weapon.Category) -> Weapon {
+    //weapon in category : Care
+    var careWeapons: [Weapon] = []
+    //Weapon in category : Attack
+    var attackWeapons: [Weapon] = []
+    //Treasure with all weapons in the game
+    let treasure: [Weapon] = game.weapons
+    //The futur weapon
+    var newWeapon: Weapon
+    //A random number for get weapon
+    let randomIndex: Int
+
+    //implémentation of weapons tables
+    for weapon in treasure {
+        //Attack weapons
+        if weapon.category == .attack {
+            attackWeapons.append(weapon)
+            //Care weapons
+        } else {
+            careWeapons.append(weapon)
+        }
+    }
+
+    print("\n*****************************")
+    print("* A treasure is appearing ! *")
+    print("*****************************")
+
+    switch category {
+
+    //Collect a weapon of type "Attack".
+    case .attack:
+        //random index for choose a new weapon
+        randomIndex = Int(arc4random_uniform(UInt32(attackWeapons.count)))
+
+        //Get the weapon
+        newWeapon = attackWeapons[randomIndex]
+
+        //Describe the weapon received
+        print("\n* You find : \(newWeapon.name) that make \(newWeapon.damages) damages. ")
+
+    //Collect a weapon of type "Care".
+    case .care:
+        //random index for choose a new weapon
+        randomIndex = Int(arc4random_uniform(UInt32(careWeapons.count)))
+
+        //Get the weapon
+        newWeapon = careWeapons[randomIndex]
+
+        //Describe the weapon received
+        print("\n* You find : \(newWeapon.name) that make \(newWeapon.damages) life. ")
+    }
+
+    return newWeapon
+}
+
 /**
  Begin a new game
  */
@@ -216,6 +293,16 @@ func playGame() {
         let fighter = game.currentPlayer.chooseFighter(inTeamOf: game.currentPlayer)
 
         //
+        //Treasure appartition
+        //
+        if treasureWillAppear() {
+            //Get a new weapon
+            let newWeapon = treasureOpening(whitWeaponType: fighter.weapon.category)
+            //Affect the new weapon
+            fighter.weapon = newWeapon
+        }
+
+        //
         //Attack/Heal
         //
         if fighter is Mage {
@@ -251,4 +338,3 @@ func playGame() {
 
 //Run the game
 playGame()
-
