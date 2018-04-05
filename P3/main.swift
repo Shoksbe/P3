@@ -194,4 +194,11 @@ func playGame() {
     print("\n# Team of: \(game.players[1].name)")
     print("*---------------------------*")
     game.players[1].displayTeam()
+
+    //
+    //Choose the fighter
+    //
+    print("\n* \(game.currentPlayer.name): Choose a fighter *")
+    print("*-------------------------------*")
+    let fighter = game.currentPlayer.chooseFighter(inTeamOf: game.currentPlayer)
 }

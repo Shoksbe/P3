@@ -44,4 +44,37 @@ class Player {
         }
     }
 
+    /**
+     Selection of the character who will fight
+
+     - Parameter player: The player who must choose a character
+
+     - Returns: The character who will fight
+     */
+    func chooseFighter(inTeamOf player: Player) -> Character {
+
+        var userChoice: Int
+        var fighter: Character!
+        var choiceIsCorrect: Bool = false
+
+        //Choose who will fight
+        repeat {
+            if let inputText = readLine() {
+                if inputText == "1" || inputText == "2" || inputText == "3" {
+                    userChoice = Int(inputText)!
+                    fighter = player.teamOfCharacter[userChoice-1]
+                    if fighter.isAlive() {
+                        choiceIsCorrect = true
+                    } else {
+                        print("This one looks dead, please choose another!")
+                    }
+                } else {
+                    print("It is not a valid choice")
+                }
+            }
+        }while(!choiceIsCorrect)
+
+        return fighter
+    }
+
 }

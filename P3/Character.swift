@@ -50,4 +50,13 @@ class Character {
 
         return description
     }
+
+    /**
+     Check if the character still has life.
+
+     - Returns: A bool, *true* if the character still has life and *false* if not
+     */
+    func isAlive() -> Bool {
+        return self.lifePoint > 0
+    }
 }
