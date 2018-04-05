@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37DA129520769B8A00CD1A15 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA129420769B8A00CD1A15 /* Character.swift */; };
+		37DA129720769CA300CD1A15 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA129620769CA300CD1A15 /* Weapon.swift */; };
+		37DA129920769CCF00CD1A15 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA129820769CCF00CD1A15 /* Type.swift */; };
 		37F47A862076848D00C2A071 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F47A852076848D00C2A071 /* main.swift */; };
 		37F47A8D207687B700C2A071 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F47A8C207687B700C2A071 /* Player.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +27,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		37DA129420769B8A00CD1A15 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		37DA129620769CA300CD1A15 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
+		37DA129820769CCF00CD1A15 /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
 		37F47A822076848D00C2A071 /* P3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = P3; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F47A852076848D00C2A071 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		37F47A8C207687B700C2A071 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -60,6 +66,9 @@
 			isa = PBXGroup;
 			children = (
 				37F47A852076848D00C2A071 /* main.swift */,
+				37DA129420769B8A00CD1A15 /* Character.swift */,
+				37DA129620769CA300CD1A15 /* Weapon.swift */,
+				37DA129820769CCF00CD1A15 /* Type.swift */,
 				37F47A8C207687B700C2A071 /* Player.swift */,
 			);
 			path = P3;
@@ -139,6 +148,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37DA129920769CCF00CD1A15 /* Type.swift in Sources */,
+				37DA129520769B8A00CD1A15 /* Character.swift in Sources */,
+				37DA129720769CA300CD1A15 /* Weapon.swift in Sources */,
 				37F47A8D207687B700C2A071 /* Player.swift in Sources */,
 				37F47A862076848D00C2A071 /* main.swift in Sources */,
 			);
