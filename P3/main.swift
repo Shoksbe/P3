@@ -183,4 +183,15 @@ func playGame() {
     let player2 = Player(name: chooseNickname(), teamOfCharacter: createTeamOfCharacter())
 
     game = Game([player1, player2])
+
+    //
+    // Display team
+    //
+    print("\n# Team of: \(game.players[0].name)")
+    print("*---------------------------*")
+    game.players[0].displayTeam()
+
+    print("\n# Team of: \(game.players[1].name)")
+    print("*---------------------------*")
+    game.players[1].displayTeam()
 }

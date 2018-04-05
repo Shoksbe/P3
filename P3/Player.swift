@@ -30,4 +30,18 @@ class Player {
         self.name = name
         self.teamOfCharacter = teamOfCharacter
     }
+
+    /**
+     Displays the characters of the team with their description
+     */
+    func displayTeam() {
+        var index: Int = 1
+
+        for character in self.teamOfCharacter {
+            print("\(index). " + character.description())
+
+            index += 1
+        }
+    }
+
 }
