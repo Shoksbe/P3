@@ -8,6 +8,9 @@
 
 import Foundation
 
+///Current game
+var game: Game!
+
 ///All nickname used in the game
 var nicknameUsed = [String]()
 
@@ -162,4 +165,22 @@ private func createTeamOfCharacter() -> [Character] {
     }
     return characters
 }
+/**
+ Begin a new game
+ */
+func playGame() {
 
+    //
+    // STEP 1 : TEAMS
+    //
+
+    print("\n* Please choose the nickname for Player 1. *")
+    print("*-----------------------------------------*")
+    let player1 = Player(name: chooseNickname(), teamOfCharacter: createTeamOfCharacter())
+
+    print("\n* Please choose the nickname for Player 2. *")
+    print("*-----------------------------------------*")
+    let player2 = Player(name: chooseNickname(), teamOfCharacter: createTeamOfCharacter())
+
+    game = Game([player1, player2])
+}
