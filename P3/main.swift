@@ -216,4 +216,21 @@ func playGame() {
         let opponent = game.currentPlayer.chooseFighter(inTeamOf: game.opponentToCurrentPlayer)
         fighter.attack(opponent)
     }
+
+    //Check if the next player have survivor, if not, game is over and the current player is the winner
+    game.winner = game.opponentToCurrentPlayer.checkForSurvivor() ? nil : game.currentPlayer
+
+    //
+    //Next player
+    //
+    game.nextPlayer()
 }
+
+//
+//Winner
+//
+print("\n***************************")
+print("**** And the winner is ****")
+print("***************************")
+print("\n#\(game.winner!.name) in \(game.lapCounter) rounds.\n")
+
