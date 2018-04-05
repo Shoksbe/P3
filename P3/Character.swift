@@ -45,7 +45,11 @@ class Character {
         if self.lifePoint == 0 { // if it's dead
             description = "\(self.name) is dead."
         } else {
-            description = "\(self.name)(\(self.type.rawValue)): \(self.lifePoint) PV • \(self.weapon.damages) attack"
+            if self is Mage {
+                description = "\(self.name)(\(self.type.rawValue)): \(self.lifePoint)PV • \(self.weapon.damages) care"
+            } else {
+                description = "\(self.name)(\(self.type.rawValue)): \(self.lifePoint)PV • \(self.weapon.damages) attack"
+            }
         }
 
         return description

@@ -124,11 +124,11 @@
 				37F47A852076848D00C2A071 /* main.swift */,
 				37DA12B72076A69A00CD1A15 /* Game.swift */,
 				37DA129420769B8A00CD1A15 /* Character.swift */,
-				37DA12B62076A02C00CD1A15 /* Characters */,
-				37DA129620769CA300CD1A15 /* Weapon.swift */,
-				37DA12B520769FE500CD1A15 /* Weapons */,
 				37DA129820769CCF00CD1A15 /* Type.swift */,
 				37F47A8C207687B700C2A071 /* Player.swift */,
+				37DA129620769CA300CD1A15 /* Weapon.swift */,
+				37DA12B62076A02C00CD1A15 /* Characters */,
+				37DA12B520769FE500CD1A15 /* Weapons */,
 			);
 			path = P3;
 			sourceTree = "<group>";
