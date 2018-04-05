@@ -263,9 +263,33 @@ func willYouPlayAgain() {
 }
 
 /**
+ Introduction text with some explication
+ */
+func introductionText() {
+    print("**********************")
+    print("| Welkom : Project 3 |")
+    print("**********************\n")
+    print("Rules:")
+    print("------")
+    print("1) No resuscitation")
+    print("2) +5 damage if you attack a character of the same type as your strength.")
+    print("3) -5 damage if you attack a character of the same type as your weakness.\n")
+    print("Character's type:")
+    print("-----------------")
+    print("Fire -> weakness: Water, strength: Grass")
+    print("Water -> weakness: Grass, strength: Fire")
+    print("Grass -> weakness: Fire, strength: Water")
+    print("Normal - > weakness: Nothing, strength: Nothing\n")
+    print("_________________________________________________")
+    print("_________________________________________________\n\n")
+}
+
+/**
  Begin a new game
  */
 func playGame() {
+
+    introductionText()
 
     //
     // STEP 1 : TEAMS
