@@ -67,3 +67,62 @@ private func chooseNickname() -> String {
 
     return nickname
 }
+
+/**
+ Choose the three characters used during the game
+
+ - returns: A table with 3 characters
+ */
+private func createTeamOfCharacter() -> [Character] {
+    ///The characters chosen by the user
+    var characters = [Character]()
+
+    print("\nHere are the characters available, you can choose 3:"
+        + "\n"
+        + "\n 1. Soldier - PV:100 / Attack:10 / Type:Water"
+        + "\n 2. Mage - PV:80 / Healts:8 / Type:Normal"
+        + "\n 3. Dward - PV:60 / Attack:15 / Type:Grass"
+        + "\n 4. Colossus - PV:150 / Attack:7 / Type:Fire")
+
+    for index in 1...3 {
+        ///The number chosen by the user
+        var userChoice: Int!
+        ///The choice respects the constraints
+        var choiceIsCorrect: Bool = false
+        ///Character's class
+        var character: Character!
+
+        print("\n- Choice of character n°\(index)")
+
+        //Choice the character
+        repeat {
+            //Save userchoice
+            if let inputText = readLine() {
+                //Verify if the choice as possible
+                if inputText == "1" || inputText == "2" || inputText == "3" || inputText == "4" {
+                    userChoice = Int(inputText)!
+                    choiceIsCorrect = true
+                } else {
+                    print("Itsn't a possible choice")
+                }
+            }
+        } while (!choiceIsCorrect)
+
+        //Save the user choice
+        switch userChoice {
+        case 1: character = Soldier()
+        case 2: character = Mage()
+        case 3: character = Dwarf()
+        case 4: character = Colossus()
+        default: print("An unknown error has occurred.")
+        }
+
+        //Choice a name for the character
+        print("\nChoose a name for your \(character.name)")
+        character.name = chooseNickname()
+
+        //Append the new character
+        characters.append(character)
+    }
+    return characters
+}
