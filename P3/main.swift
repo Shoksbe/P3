@@ -185,52 +185,70 @@ func playGame() {
     game = Game([player1, player2])
 
     //
-    // Display team
+    // STEP 2 : FIGHT
     //
-    print("\n# Team of: \(game.players[0].name)")
-    print("*---------------------------*")
-    game.players[0].displayTeam()
 
-    print("\n# Team of: \(game.players[1].name)")
-    print("*---------------------------*")
-    game.players[1].displayTeam()
+    while !game.isOver {
 
-    //
-    //Choose the fighter
-    //
-    print("\n* \(game.currentPlayer.name): Choose a fighter *")
-    print("*-------------------------------*")
-    let fighter = game.currentPlayer.chooseFighter(inTeamOf: game.currentPlayer)
+        //
+        // Lap counter
+        //
+        //Increment lap
+        game.lapCounter += 1
+        print("\n*************\n* Round : \(game.lapCounter) *\n*************")
 
-    //
-    //Attack/Heal
-    //
-    if fighter is Mage {
-        print("\n* \(game.currentPlayer.name): Choose a character to heal *")
+        //
+        // Display team
+        //
+        print("\n# Team of: \(game.players[0].name)")
+        print("*---------------------------*")
+        game.players[0].displayTeam()
+
+        print("\n# Team of: \(game.players[1].name)")
+        print("*---------------------------*")
+        game.players[1].displayTeam()
+
+        //
+        //Choose the fighter
+        //
+        print("\n* \(game.currentPlayer.name): Choose a fighter *")
         print("*-------------------------------*")
-        let characterToHeal = game.currentPlayer.chooseFighter(inTeamOf: game.currentPlayer)
-        fighter.heal(characterToHeal)
-    } else {
-        print("\n* \(game.currentPlayer.name): Choose a opponent *")
-        print("*-------------------------------*")
-        let opponent = game.currentPlayer.chooseFighter(inTeamOf: game.opponentToCurrentPlayer)
-        fighter.attack(opponent)
+        let fighter = game.currentPlayer.chooseFighter(inTeamOf: game.currentPlayer)
+
+        //
+        //Attack/Heal
+        //
+        if fighter is Mage {
+            print("\n* \(game.currentPlayer.name): Choose a character to heal *")
+            print("*-------------------------------*")
+            let characterToHeal = game.currentPlayer.chooseFighter(inTeamOf: game.currentPlayer)
+            fighter.heal(characterToHeal)
+        } else {
+            print("\n* \(game.currentPlayer.name): Choose a opponent *")
+            print("*-------------------------------*")
+            let opponent = game.currentPlayer.chooseFighter(inTeamOf: game.opponentToCurrentPlayer)
+            fighter.attack(opponent)
+        }
+
+        //Check if the next player have survivor, if not, game is over and the current player is the winner
+        game.winner = game.opponentToCurrentPlayer.checkForSurvivor() ? nil : game.currentPlayer
+
+        //
+        //Next player
+        //
+        game.nextPlayer()
     }
 
-    //Check if the next player have survivor, if not, game is over and the current player is the winner
-    game.winner = game.opponentToCurrentPlayer.checkForSurvivor() ? nil : game.currentPlayer
+    //
+    //Winner
+    //
+    print("\n***************************")
+    print("**** And the winner is ****")
+    print("***************************")
+    print("\n#\(game.winner!.name) in \(game.lapCounter) rounds.\n")
 
-    //
-    //Next player
-    //
-    game.nextPlayer()
 }
 
-//
-//Winner
-//
-print("\n***************************")
-print("**** And the winner is ****")
-print("***************************")
-print("\n#\(game.winner!.name) in \(game.lapCounter) rounds.\n")
+//Run the game
+playGame()
 
