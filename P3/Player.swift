@@ -77,4 +77,18 @@ class Player {
         return fighter
     }
 
+    /**
+     Check if there are any survivors in the team.
+
+     - Returns: Bool, *true* if he've survivor and *false* if not
+     */
+    func checkForSurvivor() -> Bool {
+        var haveSurvivor: Bool = false
+
+        for character in self.teamOfCharacter where character.lifePoint > 0 {
+            haveSurvivor =  true
+        }
+
+        return haveSurvivor
+    }
 }
