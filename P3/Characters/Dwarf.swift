@@ -12,6 +12,6 @@ class Dwarf: Character {
     let defaultName = "Dwarf"
 
     init() {
-        super.init(name: self.defaultName, weapon: HeavyAx(), lifePoint: 90, type: .fire)
+        super.init(name: self.defaultName, weapon: HeavyAx(), lifePoint: 90, type: .grass)
     }
 }

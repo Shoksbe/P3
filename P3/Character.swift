@@ -65,6 +65,35 @@ class Character {
     }
 
     /**
+     Check if the attacker's type is strong against the opponent's type
+
+     - Returns: A bool, *true* if the attacker is strong against the opponent type and *false* if not
+     */
+    private func typeOfAttackerIsStrong(against opponentType: Type) -> Bool {
+        var isStrong: Bool = false
+
+        if self.type.strongAgainst == opponentType.rawValue {
+            isStrong = true
+        }
+
+        return isStrong
+    }
+
+    /**
+     Check if the attacker's type is weakness against the opponent's type
+
+     - Returns: A bool, *true* if the attacker is weakness against the opponent type and *false* if not
+     */
+    private func typeOfattackerIsWeakness(against opponentType: Type) -> Bool {
+        var isWeakness: Bool = false
+
+        if self.type.weaknessAgainst == opponentType.rawValue {
+            isWeakness = true
+        }
+
+        return isWeakness
+    }
+    /**
      Attack another character
 
      - Parameters: The character to attack
@@ -78,12 +107,14 @@ class Character {
         var weaponDamagesDescription: String = ""
 
         //Damage bonus
-        if self.type.strongAgainst == opponent.type.rawValue {
+        if typeOfAttackerIsStrong(against: opponent.type) {
             weaponDamages = self.weapon.damages + 5
             weaponDamagesDescription = "+ 5 thanks to the weakness of the opponent."
-        } else if self.type.weaknessAgainst == opponent.type.rawValue {
+
+        } else if typeOfattackerIsWeakness(against: opponent.type) {
             weaponDamages = self.weapon.damages - 5
             weaponDamagesDescription = "- 5 because of the resistance of the opponent."
+
         } else {
             weaponDamagesDescription = "No bonus"
         }

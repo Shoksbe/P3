@@ -115,7 +115,7 @@ private func createTeamOfCharacter() -> [Character] {
         + "\n"
         + "\n 1. Soldier - PV:100 / Attack:10 / Type:Water"
         + "\n 2. Mage - PV:80 / Healts:8 / Type:Normal"
-        + "\n 3. Dward - PV:60 / Attack:15 / Type:Grass"
+        + "\n 3. Dwarf - PV:60 / Attack:15 / Type:Grass"
         + "\n 4. Colossus - PV:150 / Attack:7 / Type:Fire")
 
     useDefaultName = useCharcaterNameByDefault()
