@@ -109,14 +109,11 @@ class Character {
         //Damage bonus
         if typeOfAttackerIsStrong(against: opponent.type) {
             weaponDamages = self.weapon.damages + 5
-            weaponDamagesDescription = "+ 5 thanks to the weakness of the opponent."
+            weaponDamagesDescription = "+ 5"
 
         } else if typeOfattackerIsWeakness(against: opponent.type) {
             weaponDamages = self.weapon.damages - 5
-            weaponDamagesDescription = "- 5 because of the resistance of the opponent."
-
-        } else {
-            weaponDamagesDescription = "No bonus"
+            weaponDamagesDescription = "- 5"
         }
 
         //The character's life can not go below zero.
@@ -129,9 +126,7 @@ class Character {
         //Resume action
         print("\n- Batlle's description :")
         print("\n\(self.name)(\(self.type.rawValue)) ⚔️ \(opponent.name)(\(opponent.type.rawValue))")
-        print("\nHe inflicts, \(weaponDamages) damage.")
-        print("-- \(self.weapon.damages) damage with its \(self.weapon.name) ")
-        print("-- \(weaponDamagesDescription)\n")
+        print("\nHe inflicts, \(weaponDamages) damage (\(self.weapon.damages) \(weaponDamagesDescription)).")
 
         if opponent.lifePoint == 0 {
             print("\(opponent.name) is dead !\n")
